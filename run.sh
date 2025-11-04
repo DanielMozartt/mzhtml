@@ -1,3 +1,4 @@
+#!/bin/bash
 sudo apt update
 
 # Adiciona alias kubectl. 
@@ -28,6 +29,10 @@ docker save mzhtml:v1 | sudo k3s ctr images import -
 # 'sudo k3s ctr images ls' -> Lista todas as imagens que estão disponíveis no runtime do k3s (containerd).
 # '| grep mzhtml' -> Filtra essa lista e mostra apenas as linhas que contêm o nome da imagem 'mzhtml'.
 sudo k3s ctr images ls | grep mzhtml
+
+#Remover pods e services.
+kubectl delete deployment mzhtml
+kubectl delete service mzhtml-service
 
 #Aplica o deployment dos pods.
 kubectl apply -f k3s/deployment.yaml

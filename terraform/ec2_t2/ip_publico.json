@@ -1,0 +1,7 @@
+{
+  "public_ip": {
+    "sensitive": false,
+    "type": "string",
+    "value": "18.231.77.234"
+  }
+}

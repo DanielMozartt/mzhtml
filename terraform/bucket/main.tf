@@ -1,6 +1,6 @@
 # Bucket S3
 resource "aws_s3_bucket" "site" {
-  bucket = "mztinfohtml" # precisa ser único globalmente
+  bucket = "mztinfohtml"
 }
 
 # Configuração de site estático

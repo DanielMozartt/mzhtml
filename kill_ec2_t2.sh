@@ -1,0 +1,1 @@
+terraform -chdir=terraform/ec2_t2 destroy -auto-approve
