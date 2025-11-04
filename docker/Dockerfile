@@ -5,7 +5,7 @@ FROM nginx:alpine
 RUN rm -rf /usr/share/nginx/html/*
 
 # Copiar todo o conteúdo do projeto para a pasta do Nginx
-COPY . /usr/share/nginx/html/
+COPY HTML/ /usr/share/nginx/html/
 
 # Expor a porta 80
 EXPOSE 80

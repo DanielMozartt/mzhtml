@@ -14,19 +14,6 @@ spec:
     spec:
       containers:
       - name: mzhtml
-        image: mzhtml:1.0
+        image: mzti/mzhtml
         ports:
         - containerPort: 80
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: mzhtml-service
-spec:
-  selector:
-    app: mzhtml
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 80
-  type: NodePort
