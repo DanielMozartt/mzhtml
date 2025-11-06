@@ -6,11 +6,11 @@ echo 'alias kubectl="sudo k3s kubectl"' >> ~/.bashrc
 source ~/.bashrc
 
 # Constroi a imagem localmente.
-docker build -t mzhtml:v1 -f Docker/Dockerfile .
+docker build -t mzhtml:v1 -f docker/Dockerfile .
 
 # Constrói a imagem, usando seu_usuario_docker como prefixo e envia para nuvem.
 docker login
-docker build -t mzti/mzhtml -f Docker/Dockerfile .
+docker build -t mzti/mzhtml:v1 -f docker/Dockerfile .
 docker push mzti/mzhtml
 
 #Executa a imagem local no localhost:8080.
@@ -44,3 +44,18 @@ kubectl get svc
 
 #Cria um túnel da porta 80 para locahost:8080, para teste momentâneo.
 kubectl port-forward svc/mzhtml-service 8080:80
+
+#Acessar a máquina remotamente em AWS.
+#chmod 400 terraform/ec2_t2/mzhtmlssh.pem
+ssh -i "terraform/ec2_t2/mzhtmlssh.pem" ec2-user@ip_publico
+
+ssh -i ~/.ssh/id_rsa ubuntu@ip_publico
+
+#Verificar conteúdo da imagem importada do docker.
+    POD_NAME=$(kubectl get pods -l app=mzhtml -o jsonpath='{.items[0].metadata.name}')
+    #Conteúdo.
+    kubectl exec -it $POD_NAME -- /bin/sh -c "ls -la /usr/share/nginx/html/"
+#index.html
+kubectl exec -it $POD_NAME -- /bin/sh -c "cat /usr/share/nginx/html/index.html"
+#Abrir o terminal dentro de um pod.
+kubectl exec -it $POD_NAME -- bin/sh
