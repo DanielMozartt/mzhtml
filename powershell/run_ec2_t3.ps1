@@ -29,7 +29,7 @@ ssh -i $HOME\.ssh\id_rsa "ubuntu@$IP_PUBLICO" -o StrictHostKeyChecking=no -o Use
 
 aws ec2 describe-instances --query "Reservations[*].Instances[*].{ID:InstanceId,Name:Tags[?Key=='Name']|[0].Value,Type:InstanceType,State:State.Name,PublicIP:PublicIpAddress}" --output table
 
-$iid = "i-0b7233bf8b82efde2"
+$iid = "i-012874edc8a58b22a"
 aws ec2 start-instances --instance-ids $iid 
 aws ec2 stop-instances --instance-ids $iid 
 aws ec2 reboot-instances --instance-ids $iid 

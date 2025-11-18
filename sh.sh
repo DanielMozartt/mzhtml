@@ -51,6 +51,12 @@ ssh -i "terraform/ec2_t2/mzhtmlssh.pem" ec2-user@ip_publico
 
 ssh -i ~/.ssh/id_rsa ubuntu@ip_publico
 
+#Ativar swap para liberar memória ram;
+sudo fallocate -l 1G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+
 #Verificar conteúdo da imagem importada do docker.
     POD_NAME=$(kubectl get pods -l app=mzhtml -o jsonpath='{.items[0].metadata.name}')
     #Conteúdo.
