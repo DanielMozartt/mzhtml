@@ -37,10 +37,10 @@ resource "aws_security_group" "sg_acesso_ssh" {
   }
 }
 
-# 5. Cria a instância EC2 t2.micro
+# 5. Cria a instância EC2 t3.micro
 resource "aws_instance" "maquina_simples" {
   ami           = data.aws_ami.ubuntu.id
-  instance_type = "t2.micro" # Tipo elegível para o nível gratuito da AWS
+  instance_type = "t3.micro" # Tipo elegível para o nível gratuito da AWS
 
   key_name             = aws_key_pair.chave_ec2.key_name
   security_groups      = [aws_security_group.sg_acesso_ssh.name]

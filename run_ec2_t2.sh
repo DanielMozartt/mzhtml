@@ -10,4 +10,3 @@ IP_PUBLICO=$(terraform output -raw public_ip)
 # 2. Executa o comando SSH usando a variável armazenada
 # A flag -o StrictHostKeyChecking=no aceita automaticamente a chave do host (auto-approve)
 ssh -i ~/.ssh/id_rsa ubuntu@$IP_PUBLICO -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null
-
