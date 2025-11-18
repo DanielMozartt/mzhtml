@@ -17,23 +17,18 @@ resource "aws_key_pair" "chave_ec2" {
   public_key = file(local.public_key_path)
 }
 
-# 4. Cria um Security Group permitindo apenas acesso SSH (Porta 22)
-resource "aws_security_group" "sg_acesso_ssh" {
-  name        = "sg_acesso_ssh"
-  description = "Permite acesso SSH de qualquer lugar"
+# 4. Utiliza o módulo de Security Group dinâmico
+module "security_group" {
+  source = "../modules/security-group"
 
-  ingress {
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"] # Permite acesso SSH de qualquer IP
-  }
+  security_group_name = "sg_acesso_ec2_t2"
+  description         = "Security Group para EC2 T2 com K3s"
+  ingress_rules       = local.ingress_ports
 
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
+  tags = {
+    Environment = "Development"
+    ManagedBy   = "Terraform"
+    Project     = "mzhtml"
   }
 }
 
@@ -42,12 +37,12 @@ resource "aws_instance" "maquina_simples" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.micro" # Tipo elegível para o nível gratuito da AWS
 
-  key_name             = aws_key_pair.chave_ec2.key_name
-  security_groups      = [aws_security_group.sg_acesso_ssh.name]
+  key_name                    = aws_key_pair.chave_ec2.key_name
+  security_groups             = [module.security_group.security_group_name]
   associate_public_ip_address = true # Garante a associação automática de um IP público
 
-  
-#Script para instalar o K3S.
+
+  #Script para instalar o K3S.
   user_data = <<-EOF
     #!/bin/bash
     
@@ -109,5 +104,3 @@ EOF
     Name = "mzti-mzhtml"
   }
 }
-
-
