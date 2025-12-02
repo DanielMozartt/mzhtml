@@ -166,7 +166,7 @@ sequenceDiagram
 ### Frontend Layer
 ```
 ┌─────────────────────────────────────┐
-│        Camada de Apresentação        │
+│        Camada de Apresentação       │
 ├─────────────────────────────────────┤
 │  • HTML5 (index, sobre, servicos)   │
 │  • CSS3 (main.css, slick.css)       │
@@ -178,7 +178,7 @@ sequenceDiagram
 ### Container Layer
 ```
 ┌─────────────────────────────────────┐
-│      Camada de Containerização       │
+│      Camada de Containerização      │
 ├─────────────────────────────────────┤
 │  • Dockerfile (nginx:alpine)        │
 │  • Image: mzti/mzhtml:v1            │
