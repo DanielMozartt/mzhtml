@@ -65,3 +65,29 @@ sudo swapon /swapfile
 kubectl exec -it $POD_NAME -- /bin/sh -c "cat /usr/share/nginx/html/index.html"
 #Abrir o terminal dentro de um pod.
 kubectl exec -it $POD_NAME -- bin/sh
+
+sudo chmod +x ./shell/ec2_t2_run.sh 
+sudo chmod +x ./shell/ec2_t2_kill.sh 
+sudo chmod +x ./shell/ec2_t3_run.sh 
+sudo chmod +x ./shell/ec2_t3_kill.sh 
+
+#KUBERNETES-------------------------
+
+# Reiniciar o serviço.
+sudo systemctl restart kubelet
+
+# Monitorar PODs em tempo real.
+kubectl get pods --all-namespaces --watch
+
+#FLANNEL-----------------
+
+#Aplicar o Flannel com Kubectl.
+kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
+
+#Corrigir Flannel em caso do erro ConteinerCreating infinito no Flannel, CoreDNS e no Deploy Docker (APP ou HTML).
+sudo mv /opt/cni/bin/flannel /usr/libexec/cni/flannel
+sudo mkdir -p /usr/libexec/cni/
+sudo mv /opt/cni/bin/* /usr/libexec/cni/
+sudo modprobe br_netfilter
+lsmod | grep br_netfilter
+echo 'br_netfilter' | sudo tee /etc/modules-load.d/k8s.conf
