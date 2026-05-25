@@ -10,6 +10,28 @@ Este repositório contém o site institucional da **Mozart Informática** e toda
 
 ---
 
+## 📄 Licença
+
+Este projeto é um portfólio pessoal para fins educacionais e demonstração de habilidades DevOps.
+
+---
+
+## 🎓 Objetivo Educacional
+
+Este repositório foi criado com propósitos de **estudo e demonstração** de:
+
+- ✅ Infrastructure as Code (Terraform)
+- ✅ Containerização (Docker)
+- ✅ Orquestração Kubernetes (K3s)
+- ✅ Automação com Scripts (Bash/PowerShell)
+- ✅ AWS Cloud Services
+- ✅ DevOps Best Practices
+- ✅ CI/CD Concepts
+
+---
+
+**Desenvolvido para aprendizado e prática de DevOps**
+
 ## 🏗️ Arquitetura do Projeto
 
 ```
@@ -439,25 +461,3 @@ aws s3 sync ./html/ s3://mztinfohtml/
 - 💬 WhatsApp: [Contato](https://api.whatsapp.com/message/3T3TEGMAJYCEM1?autoload=1&app_absent=0)
 
 ---
-
-## 📄 Licença
-
-Este projeto é um portfólio pessoal para fins educacionais e demonstração de habilidades DevOps.
-
----
-
-## 🎓 Objetivo Educacional
-
-Este repositório foi criado com propósitos de **estudo e demonstração** de:
-
-- ✅ Infrastructure as Code (Terraform)
-- ✅ Containerização (Docker)
-- ✅ Orquestração Kubernetes (K3s)
-- ✅ Automação com Scripts (Bash/PowerShell)
-- ✅ AWS Cloud Services
-- ✅ DevOps Best Practices
-- ✅ CI/CD Concepts
-
----
-
-**Desenvolvido com 💻 para aprendizado e prática de DevOps**
