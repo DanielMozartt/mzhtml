@@ -8,13 +8,6 @@
 
 Este repositório contém o site institucional da **Mozart Informática** e toda a infraestrutura como código (IaC) necessária para deploy em diferentes ambientes na AWS. O projeto demonstra uma abordagem DevOps completa, incluindo containerização, orquestração Kubernetes e automação de infraestrutura.
 
-### Serviços da Mozart Informática
-
-- Limpeza e manutenção de hardware
-- Upgrades de componentes
-- Diagnósticos e orçamentos transparentes
-- Consultoria técnica especializada
-
 ---
 
 ## 🏗️ Arquitetura do Projeto
